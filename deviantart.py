@@ -50,15 +50,12 @@ def download_file(url, name):
 		output.close()
 	
 	except urllib2.HTTPError, e:
-		#checksLogger.error('HTTPError = ' + str(e.code))
 		print "<<<<<<<<<<<<<<<<<<- Error Downloading!!! ->>>>>>>>>>>>>>>>>>>>>"
 
-	#output.close()
-
-def username(url):
-	http = url.find("//")
-	dot = url.find(".")
-        return url[http+2:dot]
+# def username(url):
+# 	http = url.find("//")
+# 	dot = url.find(".")
+#         return url[http+2:dot]
 
 try:
 	username = sys.argv[1]
@@ -66,7 +63,7 @@ except:
 	print "\nUsage: python "+sys.argv[0]+" username\n"
 	exit()
 	
-url = 'http://'+username+'.deviantart.com/gallery/' # write the url here
+url = 'http://'+username+'.deviantart.com/gallery/'
 
 # Create dir for user
 dirname = username
@@ -81,7 +78,7 @@ print "page count = "+ str(page_count+1)
 while i <= page_count:
 	offset = i*24
 	myurl = url+"?offset="+str(offset)
-	#print myurl
+	
 	myhtml = html_from_URL(myurl)
 	mylinks = get_all_links(myhtml)
 
